@@ -8,7 +8,7 @@
 <style>
 /* Layout: header with a five-course tablature rule; tabbed view (network / timeline / map / guided tour) beside a source "scheda" panel; stacks at phone width. */
 :root{
-  --bg:#FFFFFF; --surface:#FFFFFF; --soft:#F4F6FA; --ink:#141B2D; --navy:#1B3A7A; --muted:#566074; --line:#DCE1EA;
+  --bg:#FFFFFF; --surface:#FFFFFF; --soft:#F4F6FA; --ink:#141B2D; --navy:#1B3A7A; --pompei:#A5352A; --muted:#566074; --line:#DCE1EA;
   --lapis:#1F4E9B; --ochre:#A86F12; --verdigris:#2F7468; --rubric:#9A3324;
   --f-display:"IM Fell DW Pica SC", "Iowan Old Style", Georgia, serif;
   --f-body:"Source Serif 4", "Iowan Old Style", Georgia, serif;
@@ -21,11 +21,11 @@ body{background:var(--bg);color:var(--ink);font:16px/1.5 var(--f-body);padding-i
 .wrap{max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
 header{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:28px 0 6px}
 .eyebrow{font:500 12px/1.5 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);max-width:70ch}
-h1{font:400 clamp(44px,9vw,96px)/1 var(--f-display);margin:6px 0 0;color:var(--navy);letter-spacing:.01em;text-wrap:balance}
+h1{font:400 clamp(44px,9vw,96px)/1 var(--f-display);margin:6px 0 0;color:var(--pompei);letter-spacing:.01em;text-wrap:balance}
 .sub{font:italic 400 clamp(18px,2.4vw,24px)/1.3 var(--f-body);color:var(--ink);margin:0}
 .lede{margin:4px 0 0;max-width:62ch;color:var(--muted);font-size:17px}
 .tabrule{width:min(420px,80%);height:40px;display:block;margin:6px auto 0}
-.tabrule line{stroke:var(--navy);stroke-width:1.2;opacity:.55}
+.tabrule line{stroke:var(--pompei);stroke-width:1.2;opacity:.6}
 .tabrule text{font:500 12px var(--f-mono);fill:var(--muted)}
 nav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding:6px 0 18px;border-bottom:1px solid var(--line)}
 nav button{font:600 15px var(--f-body);letter-spacing:.02em;color:var(--navy);background:#fff;border:1.5px solid var(--navy);border-radius:999px;padding:10px 22px;cursor:pointer;transition:background .15s,color .15s}
