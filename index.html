@@ -8,37 +8,33 @@
 <style>
 /* Layout: header with a five-course tablature rule; tabbed view (network / timeline / map / guided tour) beside a source "scheda" panel; stacks at phone width. */
 :root{
-  --bg:#EEF0EE; --surface:#F8F9F7; --ink:#1B2230; --muted:#5B6370; --line:#C9CEC8;
-  --lapis:#2B4C9B; --ochre:#A86F12; --verdigris:#2F7468; --rubric:#9A3324;
+  --bg:#FFFFFF; --surface:#FFFFFF; --soft:#F4F6FA; --ink:#141B2D; --navy:#1B3A7A; --muted:#566074; --line:#DCE1EA;
+  --lapis:#1F4E9B; --ochre:#A86F12; --verdigris:#2F7468; --rubric:#9A3324;
   --f-display:"IM Fell DW Pica SC", "Iowan Old Style", Georgia, serif;
   --f-body:"Source Serif 4", "Iowan Old Style", Georgia, serif;
   --f-mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
-  /* la pianta resta carta chiara anche nel tema scuro: questi token non cambiano */
   --paper:#E9E6DA; --map-ink:#1B2230; --map-label:#F8F7F2; --map-ochre:#A86F12; --map-hist:#9A3324;
+  color-scheme:light;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#12161C; --surface:#1A2029; --ink:#E4E7EC; --muted:#9AA3B0; --line:#333C49;
-  --lapis:#93ACEF; --ochre:#E0A94B; --verdigris:#72BCAE; --rubric:#E58A78; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#12161C; --surface:#1A2029; --ink:#E4E7EC; --muted:#9AA3B0; --line:#333C49;
-  --lapis:#93ACEF; --ochre:#E0A94B; --verdigris:#72BCAE; --rubric:#E58A78; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font:16px/1.5 var(--f-body);padding-inline:16px;padding-block:20px 40px}
-.wrap{max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
-header{display:flex;flex-direction:column;gap:6px}
-.eyebrow{font:500 12px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-h1{font:400 clamp(30px,5vw,46px)/1.05 var(--f-display);margin:0;text-wrap:balance}
-.lede{margin:0;max-width:68ch;color:var(--muted)}
-.tabrule{width:100%;height:46px;display:block}
-.tabrule line{stroke:var(--line);stroke-width:1}
+.wrap{max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+header{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:28px 0 6px}
+.eyebrow{font:500 12px/1.5 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);max-width:70ch}
+h1{font:400 clamp(44px,9vw,96px)/1 var(--f-display);margin:6px 0 0;color:var(--navy);letter-spacing:.01em;text-wrap:balance}
+.sub{font:italic 400 clamp(18px,2.4vw,24px)/1.3 var(--f-body);color:var(--ink);margin:0}
+.lede{margin:4px 0 0;max-width:62ch;color:var(--muted);font-size:17px}
+.tabrule{width:min(420px,80%);height:40px;display:block;margin:6px auto 0}
+.tabrule line{stroke:var(--navy);stroke-width:1.2;opacity:.55}
 .tabrule text{font:500 12px var(--f-mono);fill:var(--muted)}
-nav{display:flex;flex-wrap:wrap;gap:6px;border-bottom:1px solid var(--line);padding-bottom:8px}
-nav button{font:500 13px var(--f-mono);letter-spacing:.03em;color:var(--muted);background:none;border:1px solid transparent;border-radius:4px;padding:7px 12px;cursor:pointer}
-nav button[aria-selected="true"]{color:var(--ink);border-color:var(--line);background:var(--surface)}
+nav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding:6px 0 18px;border-bottom:1px solid var(--line)}
+nav button{font:600 15px var(--f-body);letter-spacing:.02em;color:var(--navy);background:#fff;border:1.5px solid var(--navy);border-radius:999px;padding:10px 22px;cursor:pointer;transition:background .15s,color .15s}
+nav button:hover{background:var(--soft)}
+nav button[aria-selected="true"]{color:#fff;background:var(--navy);border-color:var(--navy)}
 nav button:focus-visible,button:focus-visible,.node:focus-visible{outline:2px solid var(--lapis);outline-offset:2px}
 .main{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:16px;align-items:start}
 @media (max-width:900px){.main{grid-template-columns:minmax(0,1fr)}}
-.view{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px;min-width:0}
+.view{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;min-width:0;box-shadow:0 1px 3px rgba(20,27,45,.06)}
 .view svg{width:100%;height:auto;display:block}
 .legend{display:flex;flex-wrap:wrap;gap:12px;font:12px var(--f-mono);color:var(--muted);padding:6px 4px 0}
 .legend span{display:inline-flex;align-items:center;gap:6px}
@@ -87,7 +83,7 @@ nav button:focus-visible,button:focus-visible,.node:focus-visible{outline:2px so
 .mapctl button{font:500 15px/1 var(--f-mono);width:36px;height:36px;border-radius:4px;border:1px solid var(--map-ink);background:var(--map-label);color:var(--map-ink);cursor:pointer}
 .mapctl button.wide{width:auto;padding:0 8px;font-size:12px}
 .mapnote{font:12px/1.45 var(--f-mono);color:var(--muted);padding:8px 4px 0;margin:0}
-.facs{display:flex;gap:12px;align-items:flex-start;margin:14px 0 4px;padding:10px;border:1px solid var(--line);background:var(--bg);border-radius:4px}
+.facs{display:flex;gap:12px;align-items:flex-start;margin:14px 0 4px;padding:10px;border:1px solid var(--line);background:var(--soft);border-radius:4px}
 .facs .thumb{flex:none;display:block;line-height:0}
 .facs img{display:block;max-width:132px;max-height:150px;width:auto;height:auto;border:1px solid var(--line);background:#fff}
 .facs .ph{flex:none;width:88px;height:112px;display:grid;place-items:center;text-align:center;border:1px dashed var(--line);font:500 10px/1.3 var(--f-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding:6px;box-sizing:border-box;text-decoration:none}
@@ -110,14 +106,14 @@ nav button:focus-visible,button:focus-visible,.node:focus-visible{outline:2px so
 .tourctl{display:flex;gap:8px;flex-wrap:wrap}
 .btn{font:500 13px var(--f-mono);background:var(--ink);color:var(--surface);border:0;border-radius:4px;padding:8px 14px;cursor:pointer}
 .btn.ghost{background:none;color:var(--ink);border:1px solid var(--line)}
-.caption{background:var(--bg);border-left:3px solid var(--lapis);padding:10px 14px;margin:0;max-width:70ch}
+.caption{background:var(--soft);border-left:3px solid var(--lapis);padding:10px 14px;margin:0;max-width:70ch}
 /* scheda */
-aside{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:18px;display:flex;flex-direction:column;gap:12px;min-width:0;position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px)}
+aside{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px;box-shadow:0 1px 3px rgba(20,27,45,.06);display:flex;flex-direction:column;gap:12px;min-width:0;position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px)}
 @media (max-width:900px){aside{position:static}}
 .chips{display:flex;gap:6px;flex-wrap:wrap}
 .chip{font:500 11px/1 var(--f-mono);letter-spacing:.05em;text-transform:uppercase;padding:5px 7px;border-radius:3px;color:var(--surface)}
 .chip.verify{background:none;color:var(--rubric);border:1px solid var(--rubric)}
-aside h2{font:600 21px/1.25 var(--f-body);margin:0;text-wrap:balance}
+aside h2{font:600 22px/1.25 var(--f-body);margin:0;text-wrap:balance;color:var(--navy)}
 .meta{font:12.5px var(--f-mono);color:var(--muted);margin:0}
 aside p{margin:0}
 dl{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:4px 12px;margin:0;font-size:14px}
@@ -140,10 +136,11 @@ footer{font-size:13px;color:var(--muted);max-width:80ch}
 <header>
   <div class="eyebrow">Bozza della mappa interattiva · Progetto di dottorato di Lorenzo Sabene · Scienze e culture del patrimonio musicale</div>
   <h1>Roma a cinque ordini</h1>
-  <p class="lede">Fonti, persone, luoghi e tecniche del repertorio solistico per chitarra spagnola a Roma, da Millioni a Marchetti (1627-1660). Il caso di studio centrale sono i due libri di Ferdinando Valdambrini (1646, 1647).</p>
-  <svg class="tabrule" viewBox="0 0 1200 46" preserveAspectRatio="none" aria-hidden="true">
-    <line x1="0" x2="1200" y1="5" y2="5"/><line x1="0" x2="1200" y1="14" y2="14"/><line x1="0" x2="1200" y1="23" y2="23"/><line x1="0" x2="1200" y1="32" y2="32"/><line x1="0" x2="1200" y1="41" y2="41"/>
+  <p class="sub">Il repertorio solistico per chitarra spagnola · 1627-1660</p>
+  <svg class="tabrule" viewBox="0 0 420 40" preserveAspectRatio="none" aria-hidden="true">
+    <line x1="0" x2="420" y1="4" y2="4"/><line x1="0" x2="420" y1="12" y2="12"/><line x1="0" x2="420" y1="20" y2="20"/><line x1="0" x2="420" y1="28" y2="28"/><line x1="0" x2="420" y1="36" y2="36"/>
   </svg>
+  <p class="lede">Fonti, persone, luoghi e tecniche, da Millioni a Marchetti. Al centro, i due libri di Ferdinando Valdambrini (1646 e 1647), conservati in copia unica nella Biblioteca del Conservatorio di Santa Cecilia.</p>
 </header>
 
 <nav role="tablist" aria-label="Viste">
@@ -232,8 +229,8 @@ const N={
   text:"Accosta battuto e pizzicato e accoglie brani «all’uso di Francia». Dedicato al duca Carlo di Lorena.",
   fields:[["Fase","stile misto"]]},
  marchetti:{type:"fonte",label:"Marchetti, Primo libro (1660)",short:"Marchetti 1660",meta:"Roma, 1660",x:850,y:550,
-  text:"Il primo libro d’intavolatura della chitarra spagnola. Chiude il periodo del corpus.",
-  fields:[["Frontespizio","«Composto e dato in luce da Tomasso Marchetti Romano»; «In Roma, per Francesco Moneta, 1660, con licenza de’ Superiori»; «Si vendono da Gio. Battista Rossi Milanese in Navona»"],["Contenuto","«una regola facilissima per poter imparar a sonare, accordare e far lettere» e «molte sonate passeggiate»"],["Fase","scrittura idiomatica"]]},
+  text:"Il primo libro d’intavolatura della chitarra spagnola: danze in stile battuto con alfabeto, precedute da una regola per imparare da sé. Chiude il periodo del corpus e mostra la persistenza del battuto accanto alla scrittura idiomatica, per un pubblico anche di dilettanti.",
+  fields:[["Frontespizio","«Composto e dato in luce da Tomasso Marchetti Romano»; «In Roma, per Francesco Moneta, 1660, con licenza de’ Superiori»; «Si vendono da Gio. Battista Rossi Milanese in Navona»"],["Contenuto","«una regola facilissima per poter imparar a sonare, accordare e far lettere» e «molte sonate passeggiate»"],["Stile","danze in battuto con alfabeto"]]},
  bartolotti:{type:"fonte",label:"Bartolotti, Secondo libro (c. 1655)",short:"Bartolotti c. 1655",meta:"Roma, s.d. [c. 1655]",x:620,y:540,verify:true,
   text:"Opera di un autore formatosi altrove e attivo a Roma per poco tempo: permette di chiedersi quanto l’idioma romano fosse locale.",
   fields:[["Frontespizio","«Secondo libro di chitarra di Angelo Michele Bartolotti di Bologna, dedicato alla Real Maestà della Regina di Suetia»; «Romae Superior. permissu», senza data né tipografo"],["Dedica","Cristina di Svezia, arrivata a Roma nel dicembre 1655"],["Da verificare","data e tipografo (Franchi, Annali)"]]},
